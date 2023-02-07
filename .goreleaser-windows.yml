@@ -1,20 +1,24 @@
 project_name: selefra
-#builds:
-#  - env: [ CGO_ENABLED=0 ]
-#    goos:
-#      - windows
-#    goarch:
-#      - amd64
-#      - arm64
-#
-#    id: "selefra"
-#    binary:
-#      'selefra'
-#archives:
-#  - files:
-#      - none*
-#    format: zip
-#    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+builds:
+  - env: [ CGO_ENABLED=0 ]
+    goos:
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+    id: "selefra"
+    binary:
+      'selefra'
+archives:
+  - files:
+      - none*
+    format: zip
+    id: homebrew
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: linux
+        format: tar.gz
 
 #scoop:
 #  url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
