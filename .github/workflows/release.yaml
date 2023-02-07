@@ -61,6 +61,7 @@ jobs:
 
   # release Windows package
   windows-release:
+    needs: selefra_release
     runs-on: windows-latest
     steps:
       - name: Choco help
@@ -70,7 +71,7 @@ jobs:
 
       - name: Setup GoReleaser
         run: |
-          del -rf .goreleaser.yml
+          del .goreleaser.yml
           move .goreleaser-windows.yml .goreleaser.yml
       - name: Run GoReleaser
         if: "github.event.release.prerelease"
