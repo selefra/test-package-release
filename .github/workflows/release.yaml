@@ -70,8 +70,8 @@ jobs:
 
       - name: Setup GoReleaser
         run: |
-          rm -rf .goreleaser.yml
-          mv .goreleaser-windows.yml .goreleaser.yml
+          del -rf .goreleaser.yml
+          move .goreleaser-windows.yml .goreleaser.yml
       - name: Run GoReleaser
         if: "github.event.release.prerelease"
         uses: goreleaser/goreleaser-action@v3
