@@ -22,13 +22,13 @@ jobs:
       - name: git
         run: git config --global url.https://${{ secrets.SELEFRA_TOKEN }}@github.com/.insteadOf https://github.com/
 
-      - name: Get the release version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
-      - name: Set Version
-        run: |
-          sed -i "s#{{version}}#${{ steps.get_version.outputs.VERSION }}#g" cmd/version/version.go 
-          cat cmd/version/version.go
+#      - name: Get the release version
+#        id: get_version
+#        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+#      - name: Set Version
+#        run: |
+#          sed -i "s#{{version}}#${{ steps.get_version.outputs.VERSION }}#g" cmd/version/version.go
+#          cat cmd/version/version.go
 
       - name: Run GoReleaser
         if: "github.event.release.prerelease"
