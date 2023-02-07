@@ -20,6 +20,9 @@ archives:
       - goos: linux
         format: tar.gz
 
+release:
+  replace_existing_draft: true
+
 #scoop:
 #  url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
 #  bucket:
