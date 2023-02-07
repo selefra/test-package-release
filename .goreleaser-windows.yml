@@ -1,0 +1,105 @@
+project_name: selefra
+builds:
+  - env: [ CGO_ENABLED=0 ]
+    goos:
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+    id: "selefra"
+    binary:
+      'selefra'
+archives:
+  - files:
+      - none*
+    format: zip
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+#scoop:
+#  url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+#  bucket:
+#    owner: selefra
+#    name: scoop-bucket
+#  #    token: "{{ .Env.SCOOP_TAP_GITHUB_TOKEN }}"
+#  commit_author:
+#    name: Selefra Releases
+#    email: monserrat@selefra.io
+#  homepage: "https://github.com/selefra/selefra"
+#  description: "Selefra - Infrastructure as Code for Infrastructure Analysis."
+#  license: Mozilla Public License 2.0
+#
+#  # Setting this will prevent goreleaser to actually try to commit the updated
+#  # manifest leaving the responsibility of publishing it to the user.
+#  # If set to auto, the release will not be uploaded to the scoop bucket
+#  # in case there is an indicator for prerelease in the tag e.g. v1.0.0-rc1
+#  # Default is false.
+#  skip_upload: true
+#
+#  # Persist data between application updates
+#  persist:
+#    - "data"
+#    - "config.toml"
+#
+#  # An array of commands to be executed before an application is installed.
+#  # Default is empty.
+#  pre_install: [ "Write-Host 'Running preinstall command'" ]
+#
+#  # An array of commands to be executed after an application is installed.
+#  # Default is empty.
+#  post_install: [ "Write-Host 'Running postinstall command'" ]
+#
+#  # GOAMD64 to specify which amd64 version to use if there are multiple versions
+#  # from the build section.
+#  # Default is v1.
+#  goamd64: v3
+#
+chocolateys:
+  - name: selefra
+    #
+    #    owners: selefra
+    title: Selefra
+    authors: Selefra
+    project_url: https://github.com/selefra/selefra
+    #    url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    url_template: "https://github.com/selefra/test-package-release/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    icon_url: 'https://avatars.githubusercontent.com/u/104644953?s=200&v=4'
+    copyright: Mozilla Public License Version 2.0
+    license_url: https://github.com/selefra/selefra/blob/main/LICENSE
+    project_source_url: https://github.com/selefra/selefra
+    docs_url: https://www.selefra.io/docs/introduction/
+    #    bug_tracker_url: https://github.com/foo/barr/issues
+    tags: "golang aws cloud azure postgresql gcp iac infrastructure-as-code policy-as-code cspm selefra"
+    summary: Selefra - Infrastructure as Code for Infrastructure Analysis.
+    description: |
+      {{ .ProjectName }} installer package.
+      Software to create fast and easy drum rolls.
+
+    # Your app's release notes.
+    # A description of the changes made in this release of the package.
+    # Supports markdown. To prevent the need to continually update this field,
+    # providing a URL to an external list of Release Notes is perfectly
+    # acceptable.
+    # Default is empty.
+    #    release_notes: "https://github.com/selefra/selefra/releases/tag/{{ .Version }}"
+    release_notes: "https://github.com/selefra/test-package-release/releases/tag/{{ .Version }}"
+
+    # The api key that should be used to push to the chocolatey repository.
+    #
+    # WARNING: do not expose your api key in the configuration file!
+    api_key: '{{ .Env.CHOCOLATEY_API_KEY }}'
+
+    # The source repository that will push the package to.
+    #
+    # Defaults are shown below.
+    source_repo: "https://push.chocolatey.org/"
+
+    # Setting this will prevent goreleaser to actually try to push the package
+    # to chocolatey repository, leaving the responsability of publishing it to
+    # the user.
+    skip_publish: false
+
+    # GOAMD64 to specify which amd64 version to use if there are multiple
+    # versions from the build section.
+    # Default is v1.
+    goamd64: v1
