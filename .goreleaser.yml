@@ -78,12 +78,12 @@ scoop:
 
 chocolateys:
   - name: selefra
-#
-#    owners: selefra
+    #
+    #    owners: selefra
     title: Selefra
     authors: Selefra
     project_url: https://github.com/selefra/selefra
-#    url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    #    url_template: "https://github.com/selefra/selefra/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     url_template: "https://github.com/selefra/test-package-release/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     icon_url: 'https://avatars.githubusercontent.com/u/104644953?s=200&v=4'
     copyright: Mozilla Public License Version 2.0
@@ -103,13 +103,13 @@ chocolateys:
     # providing a URL to an external list of Release Notes is perfectly
     # acceptable.
     # Default is empty.
-#    release_notes: "https://github.com/selefra/selefra/releases/tag/{{ .Version }}"
+    #    release_notes: "https://github.com/selefra/selefra/releases/tag/{{ .Version }}"
     release_notes: "https://github.com/selefra/test-package-release/releases/tag/{{ .Version }}"
 
     # The api key that should be used to push to the chocolatey repository.
     #
     # WARNING: do not expose your api key in the configuration file!
-    #    api_key: '{{ .Env.CHOCOLATEY_API_KEY }}'
+    api_key: '{{ .Env.CHOCOLATEY_API_KEY }}'
 
     # The source repository that will push the package to.
     #
